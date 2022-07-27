@@ -15,16 +15,18 @@ export default function Form() {
   };
  
   return (  
-    <div className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
-      <h3 className="text-lg leading-6 font-medium text-gray-900">Caculadora de impacto económico cultural</h3>
-    <div className="flex flex-row items-start">
-      <div className="min-h-full flex flex-col justify-center sm:px-6 lg:px-8">
+    <div 
+      className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+      {/* <h3 className="text-lg leading-6 font-medium text-gray-900">Calculadora de impacto económico de actividades culturales</h3> */}
+    <div className="flex flex-row items-start flex-wrap">
+      <div className="min-h-full flex flex-col justify-center sm:px-6 lg:px-8" 
+      style={{
+        backgroundImage: `url(taquilla_2-1-min.jpeg`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        }}>
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="max-w-7xl mx-auto sm:px-6 lg:px-10 p-4">
-            <article class="prose prose-sm">
-              <p><span className="font-bold"> Instrucciones: </span>Proporcione la información a continuación para calcular el impacto económico en términos de los gastos indirectos de las personas que asistentes a eventos culturales</p>
-            </article>
-          </div>
+       
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6" action="#" method="POST">
               <div>
@@ -55,7 +57,7 @@ export default function Form() {
               </div>
               <div>
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Cantidad de personas que asistirán:
+                Cantidad de asistentes:
                 </label>
                 <div className="mt-1">
                   <input
@@ -72,7 +74,7 @@ export default function Form() {
           </div>
           <div className="max-w-7xl mx-auto sm:px-6 lg:px-10 p-4">
             <article class="prose prose-sm">
-              <p> Cuando utilice estimaciones derivadas de esta calculadora, tenga siempre en cuenta las siguientes advertencias: (1) los resultados de este análisis se basan en la mediana de las varaibles,y (2) sus resultados son, por lo tanto, estimaciones y no deben utilizarse como sustituto de la realización de un estudio de impacto económico personalizado para su comunidad.</p>
+              <p><span className="font-bold"> Instrucciones: </span>Proporcione la información para calcular el impacto económico en términos de los gastos indirectos de las personas que asisten a eventos culturales</p>
             </article>
           </div>
         </div>

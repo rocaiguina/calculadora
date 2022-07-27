@@ -33,13 +33,13 @@ export default function Results(props) {
               </th>
               <th
                 scope="col"
-                className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
+                className="py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
               >
                 Por Persona
               </th>
               <th
                 scope="col"
-                className="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell"
+                className="py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell"
               >
                 Total Evento
               </th>
@@ -69,14 +69,16 @@ export default function Results(props) {
         </table>
       </div>
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-10 p-4">
-        <article class="prose prose-sm">
+        <article class="prose text-xs font-light">
           <h3>Definiciones</h3>
-          <p><span className="font-bold">Otros gastos directos:</span> gastos en bebidas o alimentos comprados durante el evento y recuerdos, regalos u otra mercancía comprada en el evento.</p>
+          <p><span className="font-bold">Otros gastos directos:</span> gastos en bebidas o alimentos comprados durante el evento, así como recuerdos, regalos u otra mercancía.</p>
           <p><span className="font-bold">Gastos indirectos:</span> corresponde a los gastos por bebidas o alimentos comprados antes o después del evento, ropa o accesorios comprados específicamente para ese evento, transporte local, incluyendo gasolina, estacionamiento, hospedaje para asistir al evento y otros gastos relacionados con el evento.</p>
           <p><span className="font-bold">Gasto total:</span> suma de los gastos por boletos, otros gastos directos y gastos indirectos.</p>
           <p><span className="font-bold">Mediana p.p o grupo:</span> estimación de la mediana en los gastos incurridos para la persona o grupo que asisten a eventos culturales.</p>
           <p><span className="font-bold">Total (de acuerdo al número de asistentes):</span> Un estimado de lo MÍNIMO que gastarán las personas que asisten a eventos culturales.</p>
           <p><span className="font-bold">Recaudo IVU:</span> el total de dólares recibidos por el Gobierno Local y Estatal como resultado de los gastos totales.</p>
+          <p> Cuando utilice estimaciones derivadas de esta calculadora, tenga siempre en cuenta las siguientes advertencias: (1) los resultados de este análisis se basan en la mediana de las variables, y (2) sus resultados son, por lo tanto, estimaciones y no deben utilizarse como sustituto de la realización de un estudio de impacto económico personalizado para su comunidad.</p>
+          <p><span className="font-bold">Este modelo fue preparado por el Centro de Economía Creativa a partir de los resultados de la 3ra Encuesta de Consumo y Participación Cultural en Puerto Rico.</span></p>
         </article>
       </div>
     </div>
