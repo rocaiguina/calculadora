@@ -9,15 +9,17 @@ const initialValues = {
 
 export default function Form() {
   const [values, setValues] = React.useState(initialValues);
+  
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
+    const { name, value} = e.target;
+    const toNumber = Number(value.replace(/\D/g, ''));
+    setValues({ ...values, [name]: toNumber });
   };
  
   return (  
     <div 
       className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
-      {/* <h3 className="text-lg leading-6 font-medium text-gray-900">Calculadora de impacto económico de actividades culturales</h3> */}
+      <h3 className="text-lg leading-6 font-medium text-gray-900">Calculadora de impacto económico de actividades culturales</h3>
     <div className="flex flex-row items-start flex-wrap">
       <div className="min-h-full flex flex-col justify-center sm:px-6 lg:px-8" 
       style={{
@@ -26,7 +28,6 @@ export default function Form() {
         backgroundSize: 'cover',
         }}>
         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-       
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
             <form className="space-y-6" action="#" method="POST">
               <div>
@@ -38,21 +39,13 @@ export default function Form() {
                     <span className="text-gray-500 sm:text-sm">$</span>
                   </div>
                   <input
-                    value={values.ticketCost}
+                    value={values.ticketCost.toLocaleString("en-US")}
                     onChange={handleInputChange}
                     name="ticketCost"
                     label="Ticket Cost"
                     id="ticketCost"
-                    type="number"
-                    className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
-                    placeholder="0.00"
-                    aria-describedby="price-currency"
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
-                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                    <span className="text-gray-500 sm:text-sm" id="price-currency">
-                      USD
-                    </span>
-                  </div>
                 </div>
               </div>
               <div>
@@ -61,7 +54,7 @@ export default function Form() {
                 </label>
                 <div className="mt-1">
                   <input
-                    value={values.attendees}
+                    value={values.attendees.toLocaleString("en-US")}
                     onChange={handleInputChange}
                     name="attendees"
                     label="Attendees"

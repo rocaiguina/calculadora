@@ -1,72 +1,66 @@
 const formulas = {
-  otherDirectCosts: (ticketCost) => (ticketCost * 0.17005 + 19.79695).toFixed(2),
-  indirectCosts: (ticketCost) => (ticketCost * 0.115 + 40).toFixed(2),
-  totalCost: (ticketCost) => (ticketCost * 1.28463 + 61.46096).toFixed(2),
-  eventTotal: (costs, attendees) => (costs * attendees / 2).toFixed(2),
-  ivu: (totalEventCosts) => (totalEventCosts * 0.115).toFixed(2),
+  otherDirectCosts: (ticketCost) => (ticketCost * 0.17005 + 19.79695),
+  indirectCosts: (ticketCost) => (ticketCost * 0.115 + 40),
+  totalCost: (ticketCost) => (ticketCost * 1.28463 + 61.46096),
+  eventTotal: (costs, attendees) => (costs * attendees / 2),
+  ivu: (totalEventCosts) => (totalEventCosts * 0.115),
 }
 
 export default function Results(props) {
   const tableItems = [
     { concept: 'Otros gastos directos:', 
-      perPerson: '$'+formulas.otherDirectCosts(props.values.ticketCost), 
-      eventTotal: '$'+formulas.eventTotal(formulas.otherDirectCosts(props.values.ticketCost),props.values.attendees), 
-      ivu: '$'+formulas.ivu(formulas.eventTotal(formulas.otherDirectCosts(props.values.ticketCost),props.values.attendees))},
+      perPerson: formulas.otherDirectCosts(props.values.ticketCost).toLocaleString("en-US", { style: "currency", currency: "USD"}), 
+      eventTotal: formulas.eventTotal(formulas.otherDirectCosts(props.values.ticketCost),props.values.attendees).toLocaleString("en-US", { style: "currency", currency: "USD"}), 
+      ivu: formulas.ivu(formulas.eventTotal(formulas.otherDirectCosts(props.values.ticketCost),props.values.attendees)).toLocaleString("en-US", { style: "currency", currency: "USD"})},
     { concept: 'Gastos indirectos:', 
-      perPerson: '$'+formulas.indirectCosts(props.values.ticketCost), 
-      eventTotal: '$'+formulas.eventTotal(formulas.indirectCosts(props.values.ticketCost),props.values.attendees), 
-      ivu: '$'+formulas.ivu(formulas.eventTotal(formulas.indirectCosts(props.values.ticketCost),props.values.attendees)) },
+      perPerson: formulas.indirectCosts(props.values.ticketCost).toLocaleString("en-US", { style: "currency", currency: "USD"}), 
+      eventTotal: formulas.eventTotal(formulas.indirectCosts(props.values.ticketCost),props.values.attendees).toLocaleString("en-US", { style: "currency", currency: "USD"}), 
+      ivu: formulas.ivu(formulas.eventTotal(formulas.indirectCosts(props.values.ticketCost),props.values.attendees)).toLocaleString("en-US", { style: "currency", currency: "USD"}) },
     { concept: 'Gasto total:', 
-      perPerson: '$'+formulas.totalCost(props.values.ticketCost), 
-      eventTotal: '$'+formulas.eventTotal(formulas.totalCost(props.values.ticketCost),props.values.attendees), 
-      ivu: '$'+formulas.ivu(formulas.eventTotal(formulas.totalCost(props.values.ticketCost),props.values.attendees)) },
+      perPerson: formulas.totalCost(props.values.ticketCost).toLocaleString("en-US", { style: "currency", currency: "USD"}), 
+      eventTotal: formulas.eventTotal(formulas.totalCost(props.values.ticketCost),props.values.attendees).toLocaleString("en-US", { style: "currency", currency: "USD"}), 
+      ivu: formulas.ivu(formulas.eventTotal(formulas.totalCost(props.values.ticketCost),props.values.attendees)).toLocaleString("en-US", { style: "currency", currency: "USD"})},
   ]
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
-      <div className="-mx-4 mt-8 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
-        <table className="min-w-full divide-y divide-gray-300">
-          <thead className="bg-gray-50">
-            <tr>
-              <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                Concepto
-              </th>
-              <th
-                scope="col"
-                className="py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell"
-              >
-                Por Persona
-              </th>
-              <th
-                scope="col"
-                className="py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell"
-              >
-                Total Evento
-              </th>
-              <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                Recaudación IVU
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200 bg-white">
-            {tableItems.map((tableItem) => (
-              <tr key={tableItem.concept}>
-                <td className="w-full max-w-0 py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
-                  {tableItem.concept}
-                  <dl className="font-normal lg:hidden">
-                    <dt className="sr-only">Por Persona</dt>
-                    <dd className="mt-1 truncate text-gray-700">{tableItem.perPerson}</dd>
-                    <dt className="sr-only sm:hidden">Total Evento</dt>
-                    <dd className="mt-1 truncate text-gray-500 sm:hidden">{tableItem.eventTotal}</dd>
-                  </dl>
-                </td>
-                <td className="hidden px-3 py-4 text-sm text-gray-500 lg:table-cell">{tableItem.perPerson}</td>
-                <td className="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">{tableItem.eventTotal}</td>
-                <td className="px-3 py-4 text-sm text-gray-500">{tableItem.ivu}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="mt-8 flex flex-col">
+        <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+            <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+              <table className="min-w-full divide-y divide-gray-300">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                      concepto
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                      por persona
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                      por evento
+                    </th>
+                    <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                      IVU
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 bg-white">
+                  {tableItems.map((item) => (
+                    <tr key={item.email}>
+                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                        {item.concept}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{item.perPerson}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{item.eventTotal}</td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{item.ivu}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="max-w-7xl mx-auto sm:px-6 lg:px-10 p-4">
         <article class="prose text-xs font-light">
