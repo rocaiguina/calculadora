@@ -17,11 +17,9 @@ export default function Form() {
   };
  
   return (  
-    <div 
-      className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
-      <h3 className="text-lg leading-6 font-medium text-gray-900">Calculadora de impacto económico de actividades culturales</h3>
+    <div className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
     <div className="flex flex-row items-start flex-wrap">
-      <div className="min-h-full flex flex-col justify-center sm:px-6 lg:px-8" 
+      <div className="min-h-full flex flex-col justify-center sm:px-6 lg:px-3" 
       style={{
         backgroundImage: `url(taquilla_2-1-min.jpeg`,
         backgroundRepeat: 'no-repeat',
