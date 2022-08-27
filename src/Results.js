@@ -62,7 +62,7 @@ export default function Results(props) {
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto sm:px-6 lg:px-10 p-4">
+      <div className="max-w-7xl mx-auto pt-4">
         <article class="prose text-xs font-light">
           <h3>Definiciones</h3>
           <p><span className="font-bold">Otros gastos directos:</span> gastos en bebidas o alimentos comprados durante el evento, así como recuerdos, regalos u otra mercancía.</p>
